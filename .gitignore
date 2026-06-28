@@ -1,0 +1,67 @@
+# Byte-compiled / optimized / packaging
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+build/
+dist/
+wheels/
+*.egg
+
+# Virtual environments
+.venv/
+.venv-*/
+venv/
+env/
+ENV/
+
+# Environment & secrets (LLM API keys, etc.)
+.env
+.env.*
+*.key
+secrets.*
+
+# Testing / type / lint caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.dmypy.json
+.coverage
+.coverage.*
+coverage.xml
+htmlcov/
+.tox/
+.nox/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# ML / experiment artifacts
+*.ckpt
+*.pt
+*.pth
+*.h5
+*.hdf5
+*.onnx
+*.pkl
+*.npy
+*.npz
+*.safetensors
+checkpoints/
+runs/
+outputs/
+logs/
+*.log
+wandb/
+mlruns/
+data/
+
+# IDE / editor
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
