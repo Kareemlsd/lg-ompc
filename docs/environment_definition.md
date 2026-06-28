@@ -1,3 +1,12 @@
+<!--
+This document uses GitHub-flavored Markdown math syntax:
+- Inline math: `$...$`
+- Block math: `$$...$$`
+
+If your editor does not render the equations, view the file on GitHub
+or use a Markdown previewer with MathJax/KaTeX support.
+-->
+
 # Mathematical Definition of the Environment
 
 This document defines the concept of an **environment** for the LG-OMPC project.
@@ -12,7 +21,8 @@ We define an environment as the true interactive system in which actions are per
 
 An environment is denoted by
 
-\[
+
+$$
 \mathcal{E}
 =
 \left(
@@ -24,41 +34,48 @@ F_{\mathcal{E}},
 \mathcal{O},
 \mathcal{P}
 \right),
-\]
+$$
+
 
 where:
 
-- \(\mathcal{V}\) is the set of entities in the environment;
-- \(\mathcal{X}\) is the true state space;
-- \(\mathcal{U}\) is the action space;
-- \(F_{\mathcal{E}}\) is the true environment transition function;
-- \(\mathcal{R}\) is the set of relations between entities;
-- \(\mathcal{O}\) is the observation space;
-- \(\mathcal{P}\) is the set of entity-associated purposes.
+- $\mathcal{V}$ is the set of entities in the environment;
+- $\mathcal{X}$ is the true state space;
+- $\mathcal{U}$ is the action space;
+- $F_{\mathcal{E}}$ is the true environment transition function;
+- $\mathcal{R}$ is the set of relations between entities;
+- $\mathcal{O}$ is the observation space;
+- $\mathcal{P}$ is the set of entity-associated purposes.
 
-At discrete time \(k\), the environment has a true state
+At discrete time $k$, the environment has a true state
 
-\[
+
+$$
 x_k \in \mathcal{X}.
-\]
+$$
+
 
 An action
 
-\[
-u_k \in \mathcal{U}(x_k)
-\]
 
-is performed, where \(\mathcal{U}(x_k)\) denotes the set of admissible actions in state \(x_k\).
+$$
+u_k \in \mathcal{U}(x_k)
+$$
+
+
+is performed, where $\mathcal{U}(x_k)$ denotes the set of admissible actions in state $x_k$.
 
 The environment evolves according to
 
-\[
+
+$$
 x_{k+1}
 =
 F_{\mathcal{E}}(x_k, u_k, \xi_k),
-\]
+$$
 
-where \(\xi_k\) represents disturbances, uncertainty, hidden influences, or unmodeled interactions.
+
+where $\xi_k$ represents disturbances, uncertainty, hidden influences, or unmodeled interactions.
 
 The environment should be distinguished from the world model. The environment is the true system. A world model is only an approximation used for prediction and planning.
 
@@ -68,21 +85,26 @@ The environment should be distinguished from the world model. The environment is
 
 The environment contains a finite or countable set of entities
 
-\[
+
+$$
 \mathcal{V}
 =
 \{e_1, e_2, \ldots, e_n\}.
-\]
+$$
 
-Each entity \(e_i \in \mathcal{V}\) has an entity-specific state
 
-\[
+Each entity $e_i \in \mathcal{V}$ has an entity-specific state
+
+
+$$
 x_k^{(i)} \in \mathcal{X}^{(i)}.
-\]
+$$
+
 
 The full environment state may be written as
 
-\[
+
+$$
 x_k
 =
 \left(
@@ -92,15 +114,15 @@ x_k^{(2)},
 x_k^{(n)},
 r_k
 \right),
-\]
+$$
 
-where \(r_k\) contains relational or global information that does not belong to a single entity.
+
+where $r_k$ contains relational or global information that does not belong to a single entity.
 
 Examples of such relational or global information include:
 
-- distances between entities;
-- contact relations;
-- visibility relations;
+- instantaneous spatial relations (e.g., distances between entities, contact, visibility);
+- temporal relations or sequence states (e.g., sequence constraints such as "A must happen before B");
 - ownership or dependency relations;
 - environmental constraints;
 - shared resources;
@@ -114,42 +136,51 @@ This distinction is important because many relevant objectives are not entity-lo
 
 Entities may act on the environment, be acted upon by other entities, or both.
 
-For each entity \(e_i\), we define two action-related sets:
+For each entity $e_i$, we define two action-related sets:
 
-\[
+
+$$
 \mathcal{A}_i^{\mathrm{out}}
-\]
+$$
+
 
 and
 
-\[
+
+$$
 \mathcal{A}_i^{\mathrm{in}},
-\]
+$$
+
 
 where:
 
-- \(\mathcal{A}_i^{\mathrm{out}}\) is the set of actions that entity \(e_i\) can perform;
-- \(\mathcal{A}_i^{\mathrm{in}}\) is the set of actions that can be performed on entity \(e_i\).
+- $\mathcal{A}_i^{\mathrm{out}}$ is the set of actions that entity $e_i$ can perform;
+- $\mathcal{A}_i^{\mathrm{in}}$ is the set of actions that can be performed on entity $e_i$.
 
 An entity is called **active** if
 
-\[
+
+$$
 \mathcal{A}_i^{\mathrm{out}} \neq \emptyset.
-\]
+$$
+
 
 An entity is called **passive** if
 
-\[
+
+$$
 \mathcal{A}_i^{\mathrm{out}} = \emptyset
 \quad \text{and} \quad
 \mathcal{A}_i^{\mathrm{in}} \neq \emptyset.
-\]
+$$
+
 
 Passive entities are not irrelevant. They may still be essential to the system dynamics and to the construction of the objective function.
 
 For example, a human may have outgoing actions such as
 
-\[
+
+$$
 \mathcal{A}_{\mathrm{human}}^{\mathrm{out}}
 =
 \{
@@ -158,11 +189,13 @@ For example, a human may have outgoing actions such as
 \text{drink},
 \text{open}
 \},
-\]
+$$
+
 
 whereas a water bottle may primarily have incoming actions such as
 
-\[
+
+$$
 \mathcal{A}_{\mathrm{bottle}}^{\mathrm{in}}
 =
 \{
@@ -171,7 +204,8 @@ whereas a water bottle may primarily have incoming actions such as
 \text{drink from},
 \text{move}
 \}.
-\]
+$$
+
 
 In this example, the water bottle may be acted upon in order to help satisfy a purpose associated with the human, such as hydration.
 
@@ -181,9 +215,10 @@ In this example, the water bottle may be acted upon in order to help satisfy a p
 
 Each entity is assumed to be potentially multi-purpose.
 
-For each entity \(e_i\), we define a set of possible purposes
+For each entity $e_i$, we define a set of possible purposes
 
-\[
+
+$$
 \mathcal{P}_i
 =
 \{
@@ -192,22 +227,26 @@ p_i^2,
 \ldots,
 p_i^{m_i}
 \}.
-\]
+$$
+
 
 The complete purpose set of the environment is
 
-\[
+
+$$
 \mathcal{P}
 =
 \bigcup_{i=1}^{n}
 \mathcal{P}_i.
-\]
+$$
+
 
 A purpose should not be interpreted as a fixed objective. Instead, a purpose describes a possible role an entity may serve in the system.
 
 For example, a water bottle may have purposes such as
 
-\[
+
+$$
 \mathcal{P}_{\mathrm{bottle}}
 =
 \{
@@ -216,11 +255,13 @@ For example, a water bottle may have purposes such as
 \text{transport liquid},
 \text{serve as physical object}
 \}.
-\]
+$$
+
 
 A human may have purposes or needs such as
 
-\[
+
+$$
 \mathcal{P}_{\mathrm{human}}
 =
 \{
@@ -229,7 +270,8 @@ A human may have purposes or needs such as
 \text{complete task},
 \text{minimize effort}
 \}.
-\]
+$$
+
 
 The relevant purpose of an entity depends on the current state, the available actions, the relations between entities, and the desired goal.
 
@@ -237,11 +279,12 @@ The relevant purpose of an entity depends on the current state, the available ac
 
 ## 5. Purpose Relevance
 
-Let \(\mathcal{G}\) denote the space of possible goals or desired final conditions.
+Let $\mathcal{G}$ denote the space of possible goals or desired final conditions.
 
-For each entity \(e_i\), we define a purpose relevance function
+For each entity $e_i$, we define a purpose relevance function
 
-\[
+
+$$
 \rho_i :
 \mathcal{P}_i
 \times
@@ -250,32 +293,39 @@ For each entity \(e_i\), we define a purpose relevance function
 \mathcal{G}
 \rightarrow
 \mathbb{R}_{\geq 0}.
-\]
+$$
+
 
 The value
 
-\[
+
+$$
 \rho_i(p_i^j, x_k, g)
-\]
+$$
 
-measures the relevance of purpose \(p_i^j\) for entity \(e_i\), given the current environment state \(x_k\) and goal \(g \in \mathcal{G}\).
 
-A high value of \(\rho_i\) means that the corresponding purpose is relevant for objective construction.
+measures the relevance of purpose $p_i^j$ for entity $e_i$, given the current environment state $x_k$ and goal $g \in \mathcal{G}$.
+
+A high value of $\rho_i$ means that the corresponding purpose is relevant for objective construction.
 
 For example, if the goal is to make a human hydrated, then
 
-\[
+
+$$
 \rho_{\mathrm{bottle}}
 (
 \text{hydrate agent},
 x_k,
 g
 )
-\]
+$$
+
 
 should be high when a water bottle is present, contains water, and can be used by the human.
 
 This formulation avoids assigning a single fixed purpose to an entity. Instead, each entity has multiple possible purposes whose relevance depends on context.
+
+*Note on Computation:* Evaluating semantic relevance is fundamentally a task requiring intelligence. Therefore, evaluating the relevance function $\rho_i$ is generally not a hardcoded property of the physical environment itself. Rather, $\rho_i$ represents the latent operation inferred by the LLM during its interpretation step. The environment broadcasts potential roles ($\mathcal{P}_i$), and the LLM models and determines their actual relevance $\rho_i$ given the current objective and goal $g$.
 
 ---
 
@@ -283,9 +333,10 @@ This formulation avoids assigning a single fixed purpose to an entity. Instead, 
 
 The purpose structure of the environment provides semantic information from which objective terms may be assembled.
 
-Each purpose \(p_i^j\) may be associated with candidate objective terms
+Each purpose $p_i^j$ may be associated with candidate objective terms
 
-\[
+
+$$
 \Phi(p_i^j)
 =
 \{
@@ -294,43 +345,57 @@ Each purpose \(p_i^j\) may be associated with candidate objective terms
 \ldots,
 \ell_q
 \},
-\]
+$$
 
-where each \(\ell_q\) is a possible running cost, terminal cost, penalty, or constraint-related term.
+
+where each $\ell_q$ is a possible running cost, terminal cost, penalty, or constraint-related term.
 
 For example, the purpose
 
-\[
+
+$$
 p = \text{hydrate human}
-\]
+$$
+
 
 may imply objective terms such as:
 
-\[
+
+$$
 \ell_{\mathrm{hydration}}(x_k),
-\]
+$$
 
-\[
+
+$$
 \ell_{\mathrm{water\_availability}}(x_k),
-\]
+$$
 
-\[
+
+$$
 \ell_{\mathrm{effort}}(u_k),
-\]
+$$
+
 
 and
 
-\[
+
+$$
 \ell_{\mathrm{safety}}(x_k, u_k).
-\]
+$$
 
-The environment therefore does not directly define the MPC objective. Instead, it contains the structured semantic information needed to construct one.
 
-In the LG-OMPC framework, the language model receives a description of the environment, including entities, purposes, relations, actions, and goals. It then proposes or assembles an objective specification that can be used by an MPC planner.
+Because mapping multiple abstract purposes into mathematical costs often creates conflicting considerations (e.g., $\ell_{\mathrm{effort}}$ vs. $\ell_{\mathrm{safety}}$), the construction process must prioritize these terms. In the LG-OMPC framework, the language model receives a description of the environment, including entities, purposes, relations, actions, and goals. It infers both the necessary objective terms $\ell_q$ and a corresponding weighting or priority vector $\lambda_q$ to handle Pareto frontiers effectively. 
+
+It then synthesizes the final objective function $J$ as a weighted sum (or similar aggregation) of the terms:
+
+$$
+J = \sum_{q} \lambda_q \ell_q.
+$$
 
 Conceptually,
 
-\[
+
+$$
 \mathrm{LLM}
 :
 (
@@ -339,10 +404,15 @@ x_k,
 g
 )
 \mapsto
+( \{ \ell_q \}, \{ \lambda_q \} x_k,
+g
+)
+\mapsto
 J,
-\]
+$$
 
-where \(J\) is an MPC-compatible objective function or objective specification.
+
+where $J$ is an MPC-compatible objective function or objective specification.
 
 ---
 
@@ -352,69 +422,84 @@ The first environment class is the fully observed case.
 
 In this case, the full state is available:
 
-\[
+
+$$
 y_k = x_k.
-\]
+$$
+
 
 The dynamics can be represented as
 
-\[
+
+$$
 x_{k+1}
 =
 F_{\mathcal{E}}(x_k, u_k, \xi_k).
-\]
+$$
+
 
 A world model may approximate these dynamics as
 
-\[
+
+$$
 \hat{x}_{k+1}
 =
 f_\theta(x_k, u_k).
-\]
+$$
 
-In this case, MPC can operate directly on the state space \(\mathcal{X}\).
+
+In this case, MPC can operate directly on the state space $\mathcal{X}$.
 
 A generic MPC problem can be written as
 
-\[
+
+$$
 \min_{u_{k:k+N-1}}
 \sum_{j=0}^{N-1}
 \ell(x_{k+j}, u_{k+j})
 +
 \ell_f(x_{k+N}),
-\]
+$$
+
 
 subject to
 
-\[
+
+$$
 x_{k+j+1}
 =
 f_\theta(x_{k+j}, u_{k+j}),
-\]
+$$
 
-\[
+
+$$
 u_{k+j}
 \in
 \mathcal{U}(x_{k+j}),
-\]
+$$
+
 
 and
 
-\[
+
+$$
 x_{k+j}
 \in
 \mathcal{X}_{\mathrm{safe}}.
-\]
+$$
+
 
 The role of objective generation is to define or assemble
 
-\[
+
+$$
 \ell,
 \quad
 \ell_f,
 \quad
 \mathcal{X}_{\mathrm{safe}},
-\]
+$$
+
 
 from the environment description and goal.
 
@@ -426,43 +511,52 @@ The second environment class is the partially observed case.
 
 The true state exists,
 
-\[
+
+$$
 x_k \in \mathcal{X},
-\]
+$$
+
 
 but it is not directly available. Instead, measurements are observed:
 
-\[
+
+$$
 y_k
 =
 H_{\mathcal{E}}(x_k, \nu_k),
-\]
+$$
+
 
 where:
 
-- \(y_k \in \mathcal{O}\) is the observation;
-- \(H_{\mathcal{E}}\) is the observation function;
-- \(\nu_k\) represents measurement noise.
+- $y_k \in \mathcal{O}$ is the observation;
+- $H_{\mathcal{E}}$ is the observation function;
+- $\nu_k$ represents measurement noise.
 
 The true dynamics remain
 
-\[
+
+$$
 x_{k+1}
 =
 F_{\mathcal{E}}(x_k, u_k, \xi_k),
-\]
+$$
 
-but the controller does not have direct access to \(x_k\).
+
+but the controller does not have direct access to $x_k$.
 
 Therefore, planning must be performed using an estimated, latent, or lifted state
 
-\[
+
+$$
 z_k \in \mathcal{Z}.
-\]
+$$
+
 
 This state may be obtained from measurement histories and action histories:
 
-\[
+
+$$
 z_k
 =
 \psi_\theta
@@ -470,46 +564,55 @@ z_k
 y_{k-h:k},
 u_{k-h:k-1}
 ),
-\]
+$$
 
-where \(h\) is a history length and \(\psi_\theta\) is a learned encoder or lifting map.
+
+where $h$ is a history length and $\psi_\theta$ is a learned encoder or lifting map.
 
 A general learned world model may then be written as
 
-\[
+
+$$
 z_{k+1}
 =
 f_\theta(z_k, u_k).
-\]
+$$
+
 
 A Koopman-inspired formulation seeks a lifted representation in which the dynamics are approximately linear:
 
-\[
+
+$$
 z_{k+1}
 =
 A z_k + B u_k,
-\]
+$$
+
 
 with a reconstruction or output map
 
-\[
+
+$$
 \hat{y}_k
 =
 C z_k.
-\]
+$$
 
-In partially observed environments, MPC operates over \(z_k\), \(y_k\), or reconstructed estimates of meaningful state quantities.
+
+In partially observed environments, MPC operates over $z_k$, $y_k$, or reconstructed estimates of meaningful state quantities.
 
 The objective may therefore be expressed as
 
-\[
+
+$$
 J
 =
 \sum_{j=0}^{N-1}
 \ell(z_{k+j}, u_{k+j}, \hat{y}_{k+j})
 +
 \ell_f(z_{k+N}, \hat{y}_{k+N}).
-\]
+$$
+
 
 ---
 
@@ -519,14 +622,14 @@ For objective generation, the mathematical environment must be expressible in a 
 
 A useful environment description should include:
 
-- entities \(\mathcal{V}\);
-- entity states \(x_k^{(i)}\), if available;
-- available actions \(\mathcal{A}_i^{\mathrm{out}}\) and \(\mathcal{A}_i^{\mathrm{in}}\);
-- relations \(\mathcal{R}\);
-- purposes \(\mathcal{P}_i\);
-- purpose relevance information \(\rho_i\), if available;
-- observations \(y_k\), if the environment is partially observed;
-- the goal \(g\);
+- entities $\mathcal{V}$;
+- entity states $x_k^{(i)}$, if available;
+- available actions $\mathcal{A}_i^{\mathrm{out}}$ and $\mathcal{A}_i^{\mathrm{in}}$;
+- relations $\mathcal{R}$;
+- purposes $\mathcal{P}_i$;
+- purpose relevance information $\rho_i$, if available;
+- observations $y_k$, if the environment is partially observed;
+- the goal $g$;
 - safety constraints and admissible state/action sets.
 
 A possible structured representation is
@@ -581,35 +684,43 @@ The environment and the world model must remain conceptually separate.
 
 The environment is the true system:
 
-\[
+
+$$
 x_{k+1}
 =
 F_{\mathcal{E}}(x_k, u_k, \xi_k).
-\]
+$$
+
 
 The world model is an approximation used for prediction:
 
-\[
+
+$$
 \hat{x}_{k+1}
 =
 f_\theta(x_k, u_k),
-\]
+$$
+
 
 or, in the partially observed case,
 
-\[
+
+$$
 z_{k+1}
 =
 f_\theta(z_k, u_k).
-\]
+$$
+
 
 MPC does not act on the world model. MPC uses the world model to select an action, and that action is then applied to the true environment.
 
 Thus,
 
-\[
+
+$$
 \mathcal{E} \neq f_\theta.
-\]
+$$
+
 
 This distinction is central to the project.
 
