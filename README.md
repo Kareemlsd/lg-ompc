@@ -30,14 +30,19 @@ In many tasks, the challenge is not only modeling the dynamics, but also definin
 * Compare against fixed hand-designed objectives.
 * Study how well the method generalizes across different environments and tasks.
 
-## Status
+## Status & Examples
 
 This project is at the MVP stage. A working end-to-end pipeline exists:
 serialize a discrete-event environment, have a language model synthesize an
 objective function, and run a receding-horizon discrete controller that plans
-and acts. See the hydration example under `examples/`.
+and acts. 
 
-## Architecture
+Our core capabilities are showcased in two rich interactive notebooks:
+
+1. **Hydration (`examples/hydration/walkthrough.ipynb`)**: A 1D sandbox showing the basic separation of affordance vs. objective.
+2. **Sample-Return Rover (`examples/rover/walkthrough.ipynb`)**: A 2D grid world showcasing multi-objective trade-offs. The LLM writes an objective balancing scientific discovery against a strict battery budget, resulting in a planner that exhibits "graceful degradation" (collecting fewer samples automatically as battery shrinks).
+
+## Architecture & Opportunities
 
 The MVP is a small, decoupled package. Each concern is an independent module so
 any piece (model, planner, sandbox) can be swapped without touching the others.
@@ -65,6 +70,16 @@ flowchart LR
 Affordance (*can* an action run?) lives in the environment's action
 preconditions. Desirability (*should* it run?) lives entirely in the
 LLM-synthesized objective. Keeping these apart is the core design principle.
+
+## Future Direction: Learned World Models (Neural Networks)
+
+Currently, the "world model" in LG-OMPC is a hard-coded Discrete Event Simulation (DES). But the architecture is fully decoupled—meaning the `Environment` acting as the predictor is hot-swappable. 
+
+If we replace the symbolic simulator with a **Learned World Model** (e.g., a neural network encoding transition dynamics like Dreamer's RSSM, a diffusion model, or a continuous state-space model), massive opportunities unlock:
+
+1. **Differentiable MPC:** Instead of exhaustive forward tree-search, the LLM could synthesize the objective function in PyTorch or JAX. We could then use gradient-based trajectory optimization (like Model Predictive Path Integral control) by backpropagating the LLM's reward signal directly through the neural world model.
+2. **Vision/Continuous Spaces:** The learned world model could predict future pixel frames or latent vectors. The LLM (or a VLM) could evaluate those future latent states to provide the reward signal, removing the need for manual state engineering.
+3. **Infinite Affordances:** A neural world model doesn't need rigidly coded `available_actions()`. It can learn the physics of the world, meaning the planner can experiment with continuous action spaces knowing the world model will accurately enforce "virtual" affordances (e.g., you can't walk through a wall because the network predicts a collision).
 
 ## Quickstart
 

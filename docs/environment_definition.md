@@ -367,7 +367,7 @@ $$
 
 
 $$
-\ell_{\mathrm{water\_availability}}(x_k),
+\ell_{\mathrm{water\text{-}availability}}(x_k),
 $$
 
 
@@ -404,9 +404,7 @@ x_k,
 g
 )
 \mapsto
-( \{ \ell_q \}, \{ \lambda_q \} x_k,
-g
-)
+( \{ \ell_q \}, \{ \lambda_q \} )
 \mapsto
 J,
 $$
