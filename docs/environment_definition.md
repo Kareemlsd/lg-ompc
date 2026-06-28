@@ -23,17 +23,7 @@ An environment is denoted by
 
 
 $$
-\mathcal{E}
-=
-\left(
-\mathcal{V},
-\mathcal{X},
-\mathcal{U},
-F_{\mathcal{E}},
-\mathcal{R},
-\mathcal{O},
-\mathcal{P}
-\right),
+\mathcal{E} = \left( \mathcal{V}, \mathcal{X}, \mathcal{U}, F_{\mathcal{E}}, \mathcal{R}, \mathcal{O}, \mathcal{P} \right),
 $$
 
 
@@ -69,9 +59,7 @@ The environment evolves according to
 
 
 $$
-x_{k+1}
-=
-F_{\mathcal{E}}(x_k, u_k, \xi_k),
+x_{k+1} = F_{\mathcal{E}}(x_k, u_k, \xi_k),
 $$
 
 
@@ -87,9 +75,7 @@ The environment contains a finite or countable set of entities
 
 
 $$
-\mathcal{V}
-=
-\{e_1, e_2, \ldots, e_n\}.
+\mathcal{V} = \{e_1, e_2, \ldots, e_n\}.
 $$
 
 
@@ -105,15 +91,7 @@ The full environment state may be written as
 
 
 $$
-x_k
-=
-\left(
-x_k^{(1)},
-x_k^{(2)},
-\ldots,
-x_k^{(n)},
-r_k
-\right),
+x_k = \left( x_k^{(1)}, x_k^{(2)}, \ldots, x_k^{(n)}, r_k \right),
 $$
 
 
@@ -169,9 +147,7 @@ An entity is called **passive** if
 
 
 $$
-\mathcal{A}_i^{\mathrm{out}} = \emptyset
-\quad \text{and} \quad
-\mathcal{A}_i^{\mathrm{in}} \neq \emptyset.
+\mathcal{A}_i^{\mathrm{out}} = \emptyset \quad \text{and} \quad \mathcal{A}_i^{\mathrm{in}} \neq \emptyset.
 $$
 
 
@@ -181,14 +157,7 @@ For example, a human may have outgoing actions such as
 
 
 $$
-\mathcal{A}_{\mathrm{human}}^{\mathrm{out}}
-=
-\{
-\text{walk},
-\text{pick up},
-\text{drink},
-\text{open}
-\},
+\mathcal{A}_{\mathrm{human}}^{\mathrm{out}} = \{ \text{walk}, \text{pick up}, \text{drink}, \text{open} \},
 $$
 
 
@@ -196,14 +165,7 @@ whereas a water bottle may primarily have incoming actions such as
 
 
 $$
-\mathcal{A}_{\mathrm{bottle}}^{\mathrm{in}}
-=
-\{
-\text{pick up},
-\text{open},
-\text{drink from},
-\text{move}
-\}.
+\mathcal{A}_{\mathrm{bottle}}^{\mathrm{in}} = \{ \text{pick up}, \text{open}, \text{drink from}, \text{move} \}.
 $$
 
 
@@ -219,14 +181,7 @@ For each entity $e_i$, we define a set of possible purposes
 
 
 $$
-\mathcal{P}_i
-=
-\{
-p_i^1,
-p_i^2,
-\ldots,
-p_i^{m_i}
-\}.
+\mathcal{P}_i = \{ p_i^1, p_i^2, \ldots, p_i^{m_i} \}.
 $$
 
 
@@ -234,10 +189,7 @@ The complete purpose set of the environment is
 
 
 $$
-\mathcal{P}
-=
-\bigcup_{i=1}^{n}
-\mathcal{P}_i.
+\mathcal{P} = \bigcup_{i=1}^{n} \mathcal{P}_i.
 $$
 
 
@@ -247,14 +199,7 @@ For example, a water bottle may have purposes such as
 
 
 $$
-\mathcal{P}_{\mathrm{bottle}}
-=
-\{
-\text{hydrate agent},
-\text{store water},
-\text{transport liquid},
-\text{serve as physical object}
-\}.
+\mathcal{P}_{\mathrm{bottle}} = \{ \text{hydrate agent}, \text{store water}, \text{transport liquid}, \text{serve as physical object} \}.
 $$
 
 
@@ -262,14 +207,7 @@ A human may have purposes or needs such as
 
 
 $$
-\mathcal{P}_{\mathrm{human}}
-=
-\{
-\text{remain safe},
-\text{be hydrated},
-\text{complete task},
-\text{minimize effort}
-\}.
+\mathcal{P}_{\mathrm{human}} = \{ \text{remain safe}, \text{be hydrated}, \text{complete task}, \text{minimize effort} \}.
 $$
 
 
@@ -285,14 +223,7 @@ For each entity $e_i$, we define a purpose relevance function
 
 
 $$
-\rho_i :
-\mathcal{P}_i
-\times
-\mathcal{X}
-\times
-\mathcal{G}
-\rightarrow
-\mathbb{R}_{\geq 0}.
+\rho_i : \mathcal{P}_i \times \mathcal{X} \times \mathcal{G} \rightarrow \mathbb{R}_{\geq 0}.
 $$
 
 
@@ -312,12 +243,7 @@ For example, if the goal is to make a human hydrated, then
 
 
 $$
-\rho_{\mathrm{bottle}}
-(
-\text{hydrate agent},
-x_k,
-g
-)
+\rho_{\mathrm{bottle}} ( \text{hydrate agent}, x_k, g )
 $$
 
 
@@ -337,14 +263,7 @@ Each purpose $p_i^j$ may be associated with candidate objective terms
 
 
 $$
-\Phi(p_i^j)
-=
-\{
-\ell_1,
-\ell_2,
-\ldots,
-\ell_q
-\},
+\Phi(p_i^j) = \{ \ell_1, \ell_2, \ldots, \ell_q \},
 $$
 
 
@@ -396,17 +315,7 @@ Conceptually,
 
 
 $$
-\mathrm{LLM}
-:
-(
-\mathcal{E},
-x_k,
-g
-)
-\mapsto
-( \{ \ell_q \}, \{ \lambda_q \} )
-\mapsto
-J,
+\mathrm{LLM} : ( \mathcal{E}, x_k, g ) \mapsto ( \{ \ell_q \}, \{ \lambda_q \} ) \mapsto J,
 $$
 
 
@@ -430,9 +339,7 @@ The dynamics can be represented as
 
 
 $$
-x_{k+1}
-=
-F_{\mathcal{E}}(x_k, u_k, \xi_k).
+x_{k+1} = F_{\mathcal{E}}(x_k, u_k, \xi_k).
 $$
 
 
@@ -440,9 +347,7 @@ A world model may approximate these dynamics as
 
 
 $$
-\hat{x}_{k+1}
-=
-f_\theta(x_k, u_k).
+\hat{x}_{k+1} = f_\theta(x_k, u_k).
 $$
 
 
@@ -452,11 +357,7 @@ A generic MPC problem can be written as
 
 
 $$
-\min_{u_{k:k+N-1}}
-\sum_{j=0}^{N-1}
-\ell(x_{k+j}, u_{k+j})
-+
-\ell_f(x_{k+N}),
+\min_{u_{k:k+N-1}} \sum_{j=0}^{N-1} \ell(x_{k+j}, u_{k+j}) + \ell_f(x_{k+N}),
 $$
 
 
@@ -464,16 +365,12 @@ subject to
 
 
 $$
-x_{k+j+1}
-=
-f_\theta(x_{k+j}, u_{k+j}),
+x_{k+j+1} = f_\theta(x_{k+j}, u_{k+j}),
 $$
 
 
 $$
-u_{k+j}
-\in
-\mathcal{U}(x_{k+j}),
+u_{k+j} \in \mathcal{U}(x_{k+j}),
 $$
 
 
@@ -481,9 +378,7 @@ and
 
 
 $$
-x_{k+j}
-\in
-\mathcal{X}_{\mathrm{safe}}.
+x_{k+j} \in \mathcal{X}_{\mathrm{safe}}.
 $$
 
 
@@ -491,11 +386,7 @@ The role of objective generation is to define or assemble
 
 
 $$
-\ell,
-\quad
-\ell_f,
-\quad
-\mathcal{X}_{\mathrm{safe}},
+\ell, \quad \ell_f, \quad \mathcal{X}_{\mathrm{safe}},
 $$
 
 
@@ -519,9 +410,7 @@ but it is not directly available. Instead, measurements are observed:
 
 
 $$
-y_k
-=
-H_{\mathcal{E}}(x_k, \nu_k),
+y_k = H_{\mathcal{E}}(x_k, \nu_k),
 $$
 
 
@@ -535,9 +424,7 @@ The true dynamics remain
 
 
 $$
-x_{k+1}
-=
-F_{\mathcal{E}}(x_k, u_k, \xi_k),
+x_{k+1} = F_{\mathcal{E}}(x_k, u_k, \xi_k),
 $$
 
 
@@ -555,13 +442,7 @@ This state may be obtained from measurement histories and action histories:
 
 
 $$
-z_k
-=
-\psi_\theta
-(
-y_{k-h:k},
-u_{k-h:k-1}
-),
+z_k = \psi_\theta ( y_{k-h:k}, u_{k-h:k-1} ),
 $$
 
 
@@ -571,9 +452,7 @@ A general learned world model may then be written as
 
 
 $$
-z_{k+1}
-=
-f_\theta(z_k, u_k).
+z_{k+1} = f_\theta(z_k, u_k).
 $$
 
 
@@ -581,9 +460,7 @@ A Koopman-inspired formulation seeks a lifted representation in which the dynami
 
 
 $$
-z_{k+1}
-=
-A z_k + B u_k,
+z_{k+1} = A z_k + B u_k,
 $$
 
 
@@ -591,9 +468,7 @@ with a reconstruction or output map
 
 
 $$
-\hat{y}_k
-=
-C z_k.
+\hat{y}_k = C z_k.
 $$
 
 
@@ -603,12 +478,7 @@ The objective may therefore be expressed as
 
 
 $$
-J
-=
-\sum_{j=0}^{N-1}
-\ell(z_{k+j}, u_{k+j}, \hat{y}_{k+j})
-+
-\ell_f(z_{k+N}, \hat{y}_{k+N}).
+J = \sum_{j=0}^{N-1} \ell(z_{k+j}, u_{k+j}, \hat{y}_{k+j}) + \ell_f(z_{k+N}, \hat{y}_{k+N}).
 $$
 
 
@@ -684,9 +554,7 @@ The environment is the true system:
 
 
 $$
-x_{k+1}
-=
-F_{\mathcal{E}}(x_k, u_k, \xi_k).
+x_{k+1} = F_{\mathcal{E}}(x_k, u_k, \xi_k).
 $$
 
 
@@ -694,9 +562,7 @@ The world model is an approximation used for prediction:
 
 
 $$
-\hat{x}_{k+1}
-=
-f_\theta(x_k, u_k),
+\hat{x}_{k+1} = f_\theta(x_k, u_k),
 $$
 
 
@@ -704,9 +570,7 @@ or, in the partially observed case,
 
 
 $$
-z_{k+1}
-=
-f_\theta(z_k, u_k).
+z_{k+1} = f_\theta(z_k, u_k).
 $$
 
 
