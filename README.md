@@ -38,13 +38,15 @@ This project is currently in the idea and prototype stage.
 
 ```text
 lg-ompc/
+    ├── LICENSE
     ├── README.md
-    ├── environments/
-    ├── world_models/
-    ├── objective_generation/
-    ├── mpc/
-    ├── experiments/
-    └── docs/
+    ├── pyproject.toml
+    ├── docs/
+    ├── examples/
+    ├── src/
+    │   └── lg_ompc/
+    │       └── __init__.py
+    └── tests/
 ```
 
 ## License
